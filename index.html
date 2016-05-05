@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<title>sakura portfolio</title>
+	<link rel="stylesheet" type="text/css" href="sanitize.css">
+	<link href='https://fonts.googleapis.com/css?family=Libre+Baskerville' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/lightbox.min.css">
+	<link rel="stylesheet" type="text/css" href="index.css">
+	<script src="js/jquery-1.12.3.min.js"></script>
+</head>
+<body>
+<div class="bg"></div>
+<nav class="nav">
+	<h1 class="sakura">Sakura</h1>
+	<ul>
+		<li><a href="#home">Home</a></li>
+		<li><a href="#information">Information</a></li>
+		<li><a href="#profile">Profile</a></li>
+		<li><a href="#illustration">Illustration</a></li>
+		<li><a href="#movie">Movie</a></li>
+		<li><a href="http://www.pixiv.net/member_illust.php?mode=medium&illust_id=55455605">pixiv</a></li>
+		
+	</ul>
+</nav>
+<main class="main">
+<div id="home" class="home">
+	<ul>
+		<li><a href="#information"><img src="images/information.png" width="100"></a></li>
+		<li><a href="#profile"><img src="images/profile.png" width="100"></a></li>
+		<li><a href="#illustration"><img src="images/Illustration.png" width="100"></a></li>
+		<li><a href="#movie"><img src="images/Movie.png" width="100"></a></li>
+		<li><a href="http://www.pixiv.net/member_illust.php?mode=medium&illust_id=55455605"><img src="images/pixiv.png" width="40"></a></li>
+	</ul>
+</div>
+<div id="information" class="information">
+	<h2 class="title">Information</h2>
+	<p class="information-body">版権イラストに関して、販売・出版・制作元とは一切関係がございません。
+	<br>
+作品等に関する著作権は放棄していません。無断転載・濫用はおやめ下さい。</p>
+</div>
+<div id="profile">
+	<h2 class="title">Profile</h2>
+	<div class="info">Sakura　東京</div>
+	<div class="env">
+		<h3 class="env-title">作業環境</h3>
+		<ul>
+			<li>photoshop cs6</li>
+			<li>SAI</li>
+			<li>WACOM Intuos5</li>
+		</ul>
+	</div>
+</div>
+<div id="illustration">
+	<h2 class="title">Illustration</h2>
+	<dl>
+		<dt class="sub-title">oliginal</dt>
+		<dd>
+			<ul class="illust-list">
+				<li><a href="images/illust1-l.jpg" data-lightbox="illust"><img src="images/illust1.jpg" alt=""></a></li>
+				<li><a href="images/illust2-l.jpg" data-lightbox="illust"><img src="images/illust2.jpg" alt=""></a></li>
+				<li><a href="images/illust3-l.jpg" data-lightbox="illust"><img src="images/illust3.jpg" alt=""></a></li>
+				<li><a href=""><img src="" alt=""></a></li>
+				<li><a href=""><img src="" alt=""></a></li>
+			</ul>
+		</dd>
+		<dt class="sub-title">fan art</dt>
+		<dd>
+			<ul class="illust-list"> 
+					<li><a href="images/illust4-l.jpg" data-lightbox="illust"><img src="images/illust4.jpg" alt=""></a></li>
+					<li><a href="images/illust5-l.jpg" data-lightbox="illust"><img src="images/illust5.jpg" alt=""></a></li>
+					<li><a href="images/illust6-l.png" data-lightbox="illust"><img src="images/illust6.png" alt=""></a></li>
+					<li><a href="images/illust7-l.jpg" data-lightbox="illust"><img src="images/illust7.jpg" alt=""></a></li>
+					<li><a href="images/illust8-l.jpg" data-lightbox="illust"><img src="images/illust8.jpg" alt=""></a></li>
+				</ul>
+		</dd>
+	</dl>
+</div>	
+<div id="movie" class="movie">
+	<h2 class="title">Movie</h2>
+	<ul class="movie-list">
+		<li><a href="http://www.nicovideo.jp/watch/sm28647161"><img src="images/moive1.jpg" alt=""></a></li>
+		<li><a href="http://www.nicovideo.jp/watch/sm28269234"><img src="images/moive3.jpg" alt=""></a></li>
+		<li><a href="http://www.nicovideo.jp/watch/sm28398011"><img src="images/moive2.jpg" alt=""></a></li>
+	</ul>
+</div>
+</main>
+<script src="js/lightbox.min.js"></script>
+<script>
+$(function(){
+   // #で始まるアンカーをクリックした場合に処理
+   $('a[href^="#"]').click(function() {
+      // スクロールの速度
+      var speed = 400; // ミリ秒
+      // アンカーの値取得
+      var href= $(this).attr("href");
+      // 移動先を取得
+      var target = $(href == "#" || href == "" ? 'html' : href);
+      // 移動先を数値で取得
+      var position = target.offset().top;
+      // スムーススクロール
+      $('body,html').animate({scrollTop:position}, speed, 'swing');
+      return false;
+   });
+});
+</script>
+</body>
+</html>
