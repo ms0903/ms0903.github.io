@@ -104,3 +104,9 @@ li{
 .movie {
   margin-bottom: 40px;
 }
+
+.rotate {
+  transform-origin: left top;
+  transform: rotate(-90deg) scale(0.6);
+  transition: 1s;
+}

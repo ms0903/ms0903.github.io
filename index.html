@@ -23,13 +23,13 @@
 		
 	</ul>
 </nav>
-<main class="main">
-<div id="home" class="home">
+<main id="home" class="main">
+<div class="home">
 	<ul>
-		<li><a href="#information"><img src="images/information.png" width="100"></a></li>
-		<li><a href="#profile"><img src="images/profile.png" width="100"></a></li>
-		<li><a href="#illustration"><img src="images/Illustration.png" width="100"></a></li>
-		<li><a href="#movie"><img src="images/Movie.png" width="100"></a></li>
+		<li><a href="#information" class="home-link"><img src="images/information.png" width="100"></a></li>
+		<li><a href="#profile" class="home-link"><img src="images/profile.png" width="100"></a></li>
+		<li><a href="#illustration" class="home-link"><img src="images/Illustration.png" width="100"></a></li>
+		<li><a href="#movie" class="home-link"><img src="images/Movie.png" width="100"></a></li>
 		<li><a href="http://www.pixiv.net/member_illust.php?mode=medium&illust_id=55455605"><img src="images/pixiv.png" width="40"></a></li>
 	</ul>
 </div>
@@ -90,18 +90,35 @@
 $(function(){
    // #で始まるアンカーをクリックした場合に処理
    $('a[href^="#"]').click(function() {
-      // スクロールの速度
-      var speed = 400; // ミリ秒
-      // アンカーの値取得
-      var href= $(this).attr("href");
-      // 移動先を取得
-      var target = $(href == "#" || href == "" ? 'html' : href);
-      // 移動先を数値で取得
-      var position = target.offset().top;
-      // スムーススクロール
-      $('body,html').animate({scrollTop:position}, speed, 'swing');
+       // スクロールの速度
+       var speed = 1000; // ミリ秒
+       // アンカーの値取得
+       var href= $(this).attr("href");
+       // 移動先を取得
+       var target = $(href == "#" || href == "" ? 'html' : href);
+       // 移動先を数値で取得
+       var positionTop = target.offset().top;
+       var positionLeft = target.offset().left;
+       if ($(this).hasClass('home-link')) {
+           var self = $(this);
+           self.css({position: 'absolute', top: self.offset().top, left: self.offset().left});
+           target.find('.title').css('visibility', 'hidden')
+           self.animate({top: positionTop+60, left: positionLeft}, speed, 'swing');
+           $('body,html').animate({scrollTop:positionTop}, speed, 'swing',function () {
+               self.addClass('rotate');
+           });
+       }
+       else {
+           $('body,html').animate({scrollTop:positionTop}, speed, 'swing');
+       }
       return false;
    });
+    $(window).scroll(function () {
+        if($(this).scrollTop() === 0){
+            $('.home-link').css({position: 'static'}).removeClass('rotate');
+            $('.title').css('visibility', 'visible')
+        }
+    })
 });
 </script>
 </body>
