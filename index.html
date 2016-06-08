@@ -10,7 +10,13 @@
 	<script src="js/jquery-1.12.3.min.js"></script>
 </head>
 <body>
-<div class="bg"></div>
+<div class="mask"></div>
+<div class="bg">
+  <img src="images/illust3-l.jpg">
+  <img src="images/illust14-l.jpg">
+  <img src="images/illust18-l.jpg">
+  <img src="images/illust16-l.jpg">
+</div>
 <nav class="nav">
 	<h1 class="sakura">Sakura</h1>
 	<ul>
@@ -20,17 +26,16 @@
 		<li><a href="#illustration">Illustration</a></li>
 		<li><a href="#movie">Movie</a></li>
 		<li><a href="http://www.pixiv.net/member_illust.php?mode=medium&illust_id=55455605">pixiv</a></li>
-		
 	</ul>
 </nav>
 <main id="home" class="main">
 <div class="home">
 	<ul>
-		<li><a href="#information" class="home-link"><img src="images/information.png" width="100"></a></li>
-		<li><a href="#profile" class="home-link"><img src="images/profile.png" width="100"></a></li>
-		<li><a href="#illustration" class="home-link"><img src="images/Illustration.png" width="100"></a></li>
-		<li><a href="#movie" class="home-link"><img src="images/Movie.png" width="100"></a></li>
-		<li><a href="http://www.pixiv.net/member_illust.php?mode=medium&illust_id=55455605"><img src="images/pixiv.png" width="40"></a></li>
+		<li><a href="#information" class="home-link">Information</a></li>
+		<li><a href="#profile" class="home-link">Profile</a></li>
+		<li><a href="#illustration" class="home-link">illustration</a></li>
+		<li><a href="#movie" class="home-link">Movie</a></li>
+		<li><a href="http://www.pixiv.net/member_illust.php?mode=medium&illust_id=55455605" class="home-link">pixiv</a></li>
 	</ul>
 </div>
 <div id="information" class="information">
@@ -54,32 +59,38 @@
 <div id="illustration">
 	<h2 class="title">Illustration</h2>
 	<dl>
-		<dt class="sub-title">oliginal</dt>
+    <dt class="sub-title">item</dt>
+    <dd>
+      <ul class="illust-list">
+        <li><a href="images/illust16-l.jpg" data-lightbox="illust"><img src="images/illust16.jpg" alt=""></a></li>
+        <li><a href="images/illust17-l.png" data-lightbox="illust"><img src="images/illust17.png" alt=""></a></li>
+      </ul>
+    </dd>
+		<dt class="sub-title">original</dt>
 		<dd>
-			<ul class="illust-list">
+			<ul class="illust-list">  
 				<li><a href="images/illust1-l.jpg" data-lightbox="illust"><img src="images/illust1.jpg" alt=""></a></li>
+        <li><a href="images/illust8-l.jpg" data-lightbox="illust"><img src="images/illust8.jpg" alt=""></a></li>
 				<li><a href="images/illust2-l.jpg" data-lightbox="illust"><img src="images/illust2.jpg" alt=""></a></li>
 				<li><a href="images/illust3-l.jpg" data-lightbox="illust"><img src="images/illust3.jpg" alt=""></a></li>
 				<li><a href="images/illust11-l.jpg" data-lightbox="illust"><img src="images/illust11.jpg" alt=""></a></li>
 				<li><a href="images/illust13-l.jpg" data-lightbox="illust"><img src="images/illust13.jpg" alt=""></a></li>
 				<li><a href="images/illust14-l.jpg" data-lightbox="illust"><img src="images/illust14.jpg" alt=""></a></li>
-				<li><a href="images/illust15-l.jpg" data-lightbox="illust"><img src="images/illust15.jpg" alt=""></a></li>
+				<li><a href="images/illust15-l.jpg" data-lightbox="illust"><img src="images/illust15.jpg" alt=""></a></li>        
 			</ul>
 		</dd>
 		<dt class="sub-title">fan art</dt>
 		<dd>
-			<ul class="illust-list"> 
+			<ul class="illust-list">
+          <li><a href="images/illust18-l.jpg" data-lightbox="illust"><img src="images/illust18.jpg" alt=""></a></li>
 					<li><a href="images/illust4-l.jpg" data-lightbox="illust"><img src="images/illust4.jpg" alt=""></a></li>
 					<li><a href="images/illust5-l.jpg" data-lightbox="illust"><img src="images/illust5.jpg" alt=""></a></li>
 					<li><a href="images/illust6-l.png" data-lightbox="illust"><img src="images/illust6.png" alt=""></a></li>
 					<li><a href="images/illust7-l.jpg" data-lightbox="illust"><img src="images/illust7.jpg" alt=""></a></li>
-					<li><a href="images/illust8-l.jpg" data-lightbox="illust"><img src="images/illust8.jpg" alt=""></a></li>
 					<li><a href="images/illust9-l.jpg" data-lightbox="illust"><img src="images/illust9.jpg" alt=""></a></li>
 					<li><a href="images/illust10-l.jpg" data-lightbox="illust"><img src="images/illust10.jpg" alt=""></a></li>
 					<li><a href="images/illust12-l.jpg" data-lightbox="illust"><img src="images/illust12.jpg" alt=""></a></li>
-			
-
-
+          <li><a href="images/illust19-l.jpg" data-lightbox="illust"><img src="images/illust19.jpg" alt=""></a></li>
 				</ul>
 		</dd>
 	</dl>
@@ -107,11 +118,13 @@ $(function(){
        // 移動先を数値で取得
        var positionTop = target.offset().top;
        var positionLeft = target.offset().left;
+
+       var self;
+
        if ($(this).hasClass('home-link')) {
-           var self = $(this);
-           self.css({position: 'absolute', top: self.offset().top, left: self.offset().left});
+           self = $(this).parent('li');
            target.find('.title').css('visibility', 'hidden')
-           self.animate({top: positionTop+60, left: positionLeft}, speed, 'swing');
+           self.animate({top: positionTop+60, left: 0}, speed, 'swing');
            $('body,html').animate({scrollTop:positionTop}, speed, 'swing',function () {
                self.addClass('rotate');
            });
@@ -123,10 +136,28 @@ $(function(){
    });
     $(window).scroll(function () {
         if($(this).scrollTop() === 0){
-            $('.home-link').css({position: 'static'}).removeClass('rotate');
-            $('.title').css('visibility', 'visible')
+          $('.home li').each(function (idx, el) {
+            console.log(el);
+            $(el).css({top: 0, left: idx*110-30+'px'}).removeClass('rotate');
+          })
+          $('.title').css('visibility', 'visible');
         }
-    })
+    }) 
+    var $bgImg = $('.bg img')
+    var bgCount = $bgImg.length - 1;
+    var currentBg = bgCount;
+    var fadeTime = 5000;
+    setInterval(function () {
+      $bgImg.eq(currentBg).fadeOut(fadeTime);
+      if (currentBg > 0) {
+        $bgImg.eq(currentBg-1).fadeIn(fadeTime);
+        currentBg--;
+      }
+      else {
+        $bgImg.eq(bgCount).fadeIn(fadeTime);
+        currentBg = bgCount;
+      }
+    }, fadeTime*2);
 });
 </script>
 </body>
